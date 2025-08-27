@@ -1,8 +1,5 @@
 import { Page, Locator } from '@playwright/test';
 
-
-
-
 export class BasePage {
   page: Page;
   homeButton: Locator;
@@ -12,9 +9,9 @@ export class BasePage {
   nav: Locator; 
   servicesButton: Locator;
   contactUsButton: Locator;
+
   constructor(page: Page) {
     this.page = page;
-    //this.nav = page.locator('#menu-main-menu');
     this.nav = this.page.locator('nav#site-navigation');
     this.homeButton = this.nav.getByRole('link', { name: 'Home' });
     this.aboutUsButton = this.nav.locator('#menu-item-5815'); // in the test make sure to hover to reveal the 2 options. 
@@ -23,10 +20,4 @@ export class BasePage {
     this.servicesButton = this.nav.getByRole('link', { name: 'Services' });
     this.contactUsButton = this.nav.getByRole('link', { name: 'Contact us' });
   }
-
-
-
- 
-
-
 }
