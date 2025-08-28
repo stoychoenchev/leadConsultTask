@@ -1,5 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 import { BasePage } from './BasePage';
+import { TIMEOUT } from '../utils/variables';
 
 export class ContactPage extends BasePage {
    messageField: Locator;
@@ -9,7 +10,8 @@ export class ContactPage extends BasePage {
    kontaktForm: Locator;
    acceptTermsCheckbox: Locator;
    reCAPTCHAErrorMSG: Locator;
-   
+   responseOutput: Locator;
+
   constructor(page: Page) {
     super(page);
     this.kontaktForm = page.getByRole('form', { name: 'Kontaktformular' }); // I am getting the form to isolate all the fields
@@ -20,9 +22,11 @@ export class ContactPage extends BasePage {
     this.acceptTermsCheckbox = this.kontaktForm.getByRole('checkbox', { name: /I agree and allow LEAD Consult/i });
     this.sendButton = this.kontaktForm.getByRole('button', { name: 'Send' });
     this.reCAPTCHAErrorMSG = this.kontaktForm.getByText("Please verify that you are not a robot.");
+    this.responseOutput = this.kontaktForm.locator('.wpcf7-response-output');
   }
 
     async navigateToContactPage(){
     await this.page.goto('/contact-us/');
+    await this.page.waitForLoadState('networkidle', { timeout: TIMEOUT * 6 });
   }
 }

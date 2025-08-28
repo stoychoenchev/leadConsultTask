@@ -1,5 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 import { BasePage } from './BasePage';
+import { TIMEOUT } from '../utils/variables';
 
 export class HomePage extends BasePage {
 
@@ -9,5 +10,6 @@ export class HomePage extends BasePage {
 
   async navigateToHomePage(){
     await this.page.goto('');
+    await this.page.waitForLoadState('networkidle', { timeout: TIMEOUT * 6 });
   }
 }
