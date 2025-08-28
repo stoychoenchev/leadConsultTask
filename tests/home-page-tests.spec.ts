@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/HomePage';
+import { TIMEOUT } from '../utils/variables';
 
 test.beforeEach('Navigate to Home Page', async ({ page }) => {
   const homePage = new HomePage(page);
