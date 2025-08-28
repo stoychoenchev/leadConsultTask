@@ -18,7 +18,7 @@ test('Contact page contains message field, email address, or send button', async
   await expect(contactPage.sendButton).toBeEnabled(); 
 });
 
-test.only("Contact form shows reCAPTCHA error when submitting without 'I'm not a robot' checked", async ({ page }) => {
+test("Contact form shows reCAPTCHA error when submitting without 'I'm not a robot' checked", async ({ page }) => {
   const contactPage = new ContactPage(page);
   await expect(contactPage.yourNameField).toBeVisible({ timeout: TIMEOUT });
   await expect(contactPage.emailField).toBeVisible({ timeout: TIMEOUT });
