@@ -28,6 +28,5 @@ export class ContactPage extends BasePage {
     async navigateToContactPage(){
     await this.page.goto('/contact-us/');
     await this.page.waitForLoadState('networkidle', { timeout: TIMEOUT * 6 });
-
   }
 }
