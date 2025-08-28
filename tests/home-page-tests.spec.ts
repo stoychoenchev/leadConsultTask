@@ -1,5 +1,4 @@
 import { test, expect } from '@playwright/test';
-import { ContactPage } from '../pages/ContactPage';
 import { HomePage } from '../pages/HomePage';
 
 test.beforeEach('Navigate to Home Page', async ({ page }) => {
