@@ -14,8 +14,7 @@ export class ContactPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.kontaktForm = page.getByRole('form', { name: 'Kontaktformular' }); // I am getting the form to isolate all the fields
-    // I am using the regex, to ignore any leading whitespace
+    this.kontaktForm = page.getByRole('form', { name: 'Kontaktformular' }); 
     this.yourNameField = this.kontaktForm.getByRole('textbox', { name: /\s*Your Name\*/i }); 
     this.messageField = this.kontaktForm.getByRole('textbox', { name: /\s*Your Message\*/i });
     this.emailField = this.kontaktForm.getByRole('textbox', { name: /\s*Your Email\*/i });
@@ -26,7 +25,9 @@ export class ContactPage extends BasePage {
   }
 
     async navigateToContactPage(){
-    await this.page.goto('/contact-us/');
-    await this.page.waitForLoadState('networkidle', { timeout: TIMEOUT * 6 });
-  }
+   await this.page.goto('/contact-us/');
+   await this.page.waitForTimeout(TIMEOUT);
+
+    }
+
 }
