@@ -10,6 +10,5 @@ export class HomePage extends BasePage {
 
   async navigateToHomePage(){
     await this.page.goto('');
-    await this.page.waitForLoadState('networkidle', { timeout: TIMEOUT * 6 });
-  }
+    }
 }
